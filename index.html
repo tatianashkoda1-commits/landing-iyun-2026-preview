@@ -1868,8 +1868,9 @@ section:nth-child(even) {
 
 /* ═══════════ Мобильные фиксы (≤ 700px) ═══════════ */
 @media (max-width: 700px) {
-  /* Сбрасываем горизонтальный padding wrap и hero — чтобы текст не уезжал */
   :root { --edge-x: 16px; }
+  body { overflow-x: hidden; }
+
   .hero { padding: 36px 16px 70px !important; min-height: auto !important; }
   .hero .wrap { padding: 0 !important; max-width: 100% !important; }
   .site-header { padding: 18px 0 !important; }
@@ -1879,7 +1880,6 @@ section:nth-child(even) {
     justify-content: flex-start !important;
   }
 
-  /* Hero листок и текст — без desktop translate/scale */
   .hero-month-tab {
     width: 100% !important;
     transform: none !important;
@@ -1899,12 +1899,24 @@ section:nth-child(even) {
     text-align: center !important;
   }
 
-  /* Программа — портрет шефа, сводка, блюда — корректные пропорции */
+  /* Программа — гасим зебру и боковые "вылеты", центрируем сетку */
+  #program .wrap { padding: 0 16px !important; max-width: 100% !important; }
+  .chef-block::before { display: none !important; }
+  .chef-block:nth-child(even) {
+    background: transparent !important;
+    box-shadow: none !important;
+  }
   .chef-block {
-    display: flex !important;
-    flex-direction: column !important;
-    gap: 12px !important;
-    padding: 22px 0 !important;
+    display: grid !important;
+    grid-template-columns: 1fr 1fr !important;
+    gap: 10px !important;
+    padding: 18px 0 !important;
+    background: transparent !important;
+    box-shadow: none !important;
+  }
+  .chef-block .chef-portrait,
+  .chef-block .chef-summary {
+    grid-column: 1 / span 2;
   }
   .chef-portrait {
     aspect-ratio: 16/10 !important;
@@ -1912,30 +1924,26 @@ section:nth-child(even) {
     max-height: 320px;
     height: auto !important;
   }
+  .chef-portrait img {
+    object-position: center 18% !important;
+  }
+  /* Аветисов (1-й блок) — портрет ещё ниже сместить, чтобы голову не резало */
+  .chef-block:nth-child(1) .chef-portrait img {
+    object-position: center 8% !important;
+  }
   .chef-summary {
     aspect-ratio: auto !important;
     height: auto !important;
     padding: 22px 18px !important;
-    order: 2;
   }
-  .chef-portrait { order: 1; }
   .dish-tile {
     aspect-ratio: 1 / 1 !important;
-    order: 3;
   }
   .program-blocks {
     gap: 12px !important;
   }
-  /* Блюда в 2 колонки на мобильном через wrapper-flexbox */
-  .chef-block {
-    display: grid !important;
-    grid-template-columns: 1fr 1fr !important;
-    gap: 10px !important;
-  }
-  .chef-block .chef-portrait { grid-column: 1 / span 2; }
-  .chef-block .chef-summary { grid-column: 1 / span 2; }
 
-  /* Призы — листа SVG нет, обычная белая карточка */
+  /* Призы — обычная карточка */
   .prize-calendar > svg { display: none !important; }
   .prize-calendar {
     background: #fff;
