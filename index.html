@@ -1914,9 +1914,16 @@ section:nth-child(even) {
     background: transparent !important;
     box-shadow: none !important;
   }
-  .chef-block .chef-portrait,
+  .chef-block .chef-portrait {
+    grid-column: 1 / span 2;
+    order: 1;
+  }
   .chef-block .chef-summary {
     grid-column: 1 / span 2;
+    order: 2;
+  }
+  .chef-block .dish-tile {
+    order: 3;
   }
   .chef-portrait {
     aspect-ratio: 16/10 !important;
