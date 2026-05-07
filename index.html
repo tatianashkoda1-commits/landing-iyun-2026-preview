@@ -1907,22 +1907,24 @@ section:nth-child(even) {
     box-shadow: none !important;
   }
   .chef-block {
-    display: grid !important;
-    grid-template-columns: 1fr 1fr !important;
-    gap: 10px !important;
+    display: flex !important;
+    flex-wrap: wrap !important;
+    gap: 8px !important;
+    justify-content: center !important;
     padding: 18px 0 !important;
     background: transparent !important;
     box-shadow: none !important;
   }
   .chef-block .chef-portrait {
-    grid-column: 1 / span 2;
+    flex: 0 0 100% !important;
     order: 1;
   }
   .chef-block .chef-summary {
-    grid-column: 1 / span 2;
+    flex: 0 0 100% !important;
     order: 2;
   }
   .chef-block .dish-tile {
+    flex: 0 0 calc(50% - 4px) !important;
     order: 3;
   }
   .chef-portrait {
