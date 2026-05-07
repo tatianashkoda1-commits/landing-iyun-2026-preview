@@ -259,7 +259,11 @@ p { font-size: 17px; color: var(--ink-light); }
   line-height: 1; letter-spacing: -0.03em;
   flex-shrink: 0;
 }
-.cred-item .text { font-size: 14px; color: var(--ink-light); font-weight: 500; }
+.cred-item .text { font-size: 14px; color: var(--ink-light); font-weight: 500; min-width: 0; }
+@media (max-width: 600px) {
+  .author-bio .credentials { grid-template-columns: 1fr; gap: 14px; }
+  .cred-item .num { font-size: 24px; }
+}
 
 /* ---- TARIFY ---- */
 .pricing {
