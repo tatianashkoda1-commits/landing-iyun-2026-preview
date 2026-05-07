@@ -1868,28 +1868,74 @@ section:nth-child(even) {
 
 /* ═══════════ Мобильные фиксы (≤ 700px) ═══════════ */
 @media (max-width: 700px) {
-  /* Hero — сбросить desktop translate/scale, лист помещается в viewport */
+  /* Сбрасываем горизонтальный padding wrap и hero — чтобы текст не уезжал */
+  :root { --edge-x: 16px; }
+  .hero { padding: 36px 16px 70px !important; min-height: auto !important; }
+  .hero .wrap { padding: 0 !important; max-width: 100% !important; }
+  .site-header { padding: 18px 0 !important; }
+  .site-header .header-inner {
+    transform: none !important;
+    padding: 0 16px !important;
+    justify-content: flex-start !important;
+  }
+
+  /* Hero листок и текст — без desktop translate/scale */
   .hero-month-tab {
     width: 100% !important;
     transform: none !important;
     margin: 0 auto 14px !important;
+    display: block !important;
   }
   .hero-text {
     transform: none !important;
     max-width: 100% !important;
     text-align: center !important;
-    padding: 0 16px !important;
+    margin: 0 auto !important;
+    padding: 0 !important;
   }
   .hero-eyebrow-sub {
-    margin: 14px auto 8px !important;
+    margin: 12px auto 8px !important;
     width: auto !important;
-  }
-  .site-header .header-inner {
-    transform: none !important;
-    padding: 0 16px !important;
+    text-align: center !important;
   }
 
-  /* Призы — на мобильном лист SVG скрываем, секция как обычная белая карточка */
+  /* Программа — портрет шефа, сводка, блюда — корректные пропорции */
+  .chef-block {
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 12px !important;
+    padding: 22px 0 !important;
+  }
+  .chef-portrait {
+    aspect-ratio: 16/10 !important;
+    width: 100%;
+    max-height: 320px;
+    height: auto !important;
+  }
+  .chef-summary {
+    aspect-ratio: auto !important;
+    height: auto !important;
+    padding: 22px 18px !important;
+    order: 2;
+  }
+  .chef-portrait { order: 1; }
+  .dish-tile {
+    aspect-ratio: 1 / 1 !important;
+    order: 3;
+  }
+  .program-blocks {
+    gap: 12px !important;
+  }
+  /* Блюда в 2 колонки на мобильном через wrapper-flexbox */
+  .chef-block {
+    display: grid !important;
+    grid-template-columns: 1fr 1fr !important;
+    gap: 10px !important;
+  }
+  .chef-block .chef-portrait { grid-column: 1 / span 2; }
+  .chef-block .chef-summary { grid-column: 1 / span 2; }
+
+  /* Призы — листа SVG нет, обычная белая карточка */
   .prize-calendar > svg { display: none !important; }
   .prize-calendar {
     background: #fff;
@@ -1906,42 +1952,13 @@ section:nth-child(even) {
     right: auto !important;
     padding: 0 !important;
   }
-  .prize-row-3 {
-    grid-template-columns: 1fr 1fr !important;
-  }
-  .prize-row-2 {
-    max-width: 100% !important;
-  }
+  .prize-row-3 { grid-template-columns: 1fr 1fr !important; }
+  .prize-row-2 { max-width: 100% !important; }
   .prize-final-label {
     font-size: 1.2em !important;
     margin: 22px 0 12px !important;
   }
-  .prize-disclaimer {
-    margin-top: 28px !important;
-  }
-
-  /* Программа шефов — портрет шире, не квадрат, чтобы не сжимался при перерисовке */
-  .chef-block {
-    grid-template-columns: 1fr !important;
-    gap: 14px !important;
-  }
-  .chef-portrait,
-  .chef-summary,
-  .dish-tile {
-    aspect-ratio: auto !important;
-    height: auto !important;
-  }
-  .chef-portrait {
-    aspect-ratio: 16/10 !important;
-    max-height: 280px;
-  }
-  .chef-summary {
-    aspect-ratio: auto !important;
-    padding: 22px 18px !important;
-  }
-  .dish-tile {
-    aspect-ratio: 1 / 1 !important;
-  }
+  .prize-disclaimer { margin-top: 28px !important; }
 }
 </style>
 
