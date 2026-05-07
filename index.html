@@ -1865,6 +1865,84 @@ section:nth-child(even) {
   @media print {
     .edit-controls { display: none; }
   }
+
+/* ═══════════ Мобильные фиксы (≤ 700px) ═══════════ */
+@media (max-width: 700px) {
+  /* Hero — сбросить desktop translate/scale, лист помещается в viewport */
+  .hero-month-tab {
+    width: 100% !important;
+    transform: none !important;
+    margin: 0 auto 14px !important;
+  }
+  .hero-text {
+    transform: none !important;
+    max-width: 100% !important;
+    text-align: center !important;
+    padding: 0 16px !important;
+  }
+  .hero-eyebrow-sub {
+    margin: 14px auto 8px !important;
+    width: auto !important;
+  }
+  .site-header .header-inner {
+    transform: none !important;
+    padding: 0 16px !important;
+  }
+
+  /* Призы — на мобильном лист SVG скрываем, секция как обычная белая карточка */
+  .prize-calendar > svg { display: none !important; }
+  .prize-calendar {
+    background: #fff;
+    border-radius: 14px;
+    padding: 28px 18px 24px;
+    margin: 24px 16px 0;
+    box-shadow: 0 8px 28px rgba(0,0,0,0.08);
+  }
+  .prize-content,
+  .prize-content-with-title {
+    position: static !important;
+    top: auto !important;
+    left: auto !important;
+    right: auto !important;
+    padding: 0 !important;
+  }
+  .prize-row-3 {
+    grid-template-columns: 1fr 1fr !important;
+  }
+  .prize-row-2 {
+    max-width: 100% !important;
+  }
+  .prize-final-label {
+    font-size: 1.2em !important;
+    margin: 22px 0 12px !important;
+  }
+  .prize-disclaimer {
+    margin-top: 28px !important;
+  }
+
+  /* Программа шефов — портрет шире, не квадрат, чтобы не сжимался при перерисовке */
+  .chef-block {
+    grid-template-columns: 1fr !important;
+    gap: 14px !important;
+  }
+  .chef-portrait,
+  .chef-summary,
+  .dish-tile {
+    aspect-ratio: auto !important;
+    height: auto !important;
+  }
+  .chef-portrait {
+    aspect-ratio: 16/10 !important;
+    max-height: 280px;
+  }
+  .chef-summary {
+    aspect-ratio: auto !important;
+    padding: 22px 18px !important;
+  }
+  .dish-tile {
+    aspect-ratio: 1 / 1 !important;
+  }
+}
 </style>
 
 <div class="edit-controls">
